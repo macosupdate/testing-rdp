@@ -1,0 +1,29 @@
+name: Nzha Agent
+
+on:
+  workflow_dispatch:   # chạy thủ công từ giao diện GitHub
+  push:                # hoặc bạn có thể bật khi push code
+    branches:
+      - main
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3600
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Cài Nezha Agent
+        run: |
+          curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/install_en.sh -o nezha.sh
+          chmod +x nezha.sh
+          ./nezha.sh install_agent data.tuvikhoahoc.com 443 mSVc8fihLm22HYZnh4 --tls
+
+      - name: Giữ job chạy
+        run: |
+          while true; do
+            echo "[$(date)] Nezha Agent is active - Use Ctrl+C in workflow to terminate"
+            sleep 300
+          done
