@@ -1,10 +1,12 @@
 name: Nzha Agent
 
 on:
+  schedule:
+    - cron: "0 */6 * * *"   # chạy mỗi 6 tiếng
   workflow_dispatch:   # chạy thủ công từ giao diện GitHub
-  push:                # hoặc bạn có thể bật khi push code
-    branches:
-      - main
+ # push:                # hoặc bạn có thể bật khi push code
+  #  branches:
+   #   - main
 
 jobs:
   run-agent:
@@ -19,7 +21,7 @@ jobs:
         run: |
           curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/install_en.sh -o nezha.sh
           chmod +x nezha.sh
-          ./nezha.sh install_agent data.tuvikhoahoc.com 443 mSVc8fihLm22HYZnh4 --tls
+          ./nezha.sh install_agent ${{ secrets.NEZHA_DOMAIN }} 443 ${{ secrets.NEZHA_KEY }} --tls
 
       - name: Giữ job chạy
         run: |
