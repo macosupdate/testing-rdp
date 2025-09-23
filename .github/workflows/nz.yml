@@ -2,7 +2,7 @@ name: Nzha Agent
 
 on:
   schedule:
-    - cron: "0 */5 * * *"   # chạy mỗi 6 tiếng
+    - cron: "0 0,6,12,18 * * *"   # chạy mỗi 6 tiếng
   workflow_dispatch:   # chạy thủ công từ giao diện GitHub
  # push:                # hoặc bạn có thể bật khi push code
   #  branches:
