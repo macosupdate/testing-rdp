@@ -8,6 +8,7 @@ on:
     - cron: '30 17 * * *' # 17:30 UTC
     - cron: '20 23 * * *' # 23:20 UTC
   workflow_dispatch:   # chạy thủ công từ giao diện GitHub
+    types: [run]
  # push:                # hoặc bạn có thể bật khi push code
   #  branches:
    #   - main
