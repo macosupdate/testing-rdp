@@ -30,6 +30,6 @@ jobs:
       - name: Giữ job chạy
         run: |
           while true; do
-            echo "[$(date)] Nezha Agent is active - Use Ctrl+C in workflow to terminate"
+            echo "[$(date)] Use Ctrl+C in workflow to terminate"
             sleep 300
           done
