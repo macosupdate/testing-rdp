@@ -1,3 +1,4 @@
+$authKey = $env:TAILSCALE_AUTH_KEY
 # Enable Remote Desktop and disable Network Level Authentication (if needed)
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' `
                     -Name "fDenyTSConnections" -Value 0 -Force
@@ -31,7 +32,7 @@ Start-Process msiexec.exe -ArgumentList "/i", "`"$installerPath`"", "/quiet", "/
 Remove-Item $installerPath -Force
 
 # Bring up Tailscale with the provided auth key and set a unique hostname
-& "$env:ProgramFiles\Tailscale\tailscale.exe" up --authkey=${{ secrets.TAILSCALE_AUTH_KEY }} --hostname=gh-runner-$env:GITHUB_RUN_ID
+& "$env:ProgramFiles\Tailscale\tailscale.exe" up --authkey=$authKey --hostname=gh-runner-$env:GITHUB_RUN_ID
 
 # Wait for Tailscale to assign an IP
 $tsIP = $null
