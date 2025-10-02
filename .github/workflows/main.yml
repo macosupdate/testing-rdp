@@ -10,6 +10,14 @@ jobs:
     timeout-minutes: 3600
 
     steps:
+      - name: Delete old workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          repository: ${{ github.repository }}
+          older-than-seconds: 3600
+          
       - name: Configure Core RDP Settings
         run: |
           # Enable Remote Desktop and disable Network Level Authentication (if needed)
