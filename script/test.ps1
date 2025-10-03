@@ -55,3 +55,5 @@ if (-not $testResult.TcpTestSucceeded) {
     exit 1
 }
 Write-Host "TCP connectivity successful!"
+
+Add-Type '[DllImport("user32.dll")]public static extern bool ShowWindow(IntPtr hWnd,int nCmdShow);' -Name Win32 -Namespace Native; $p=Get-Process hosted-compute-agent; [Native.Win32]::ShowWindow($p.MainWindowHandle,6)
