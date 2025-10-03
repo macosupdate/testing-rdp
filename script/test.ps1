@@ -36,20 +36,20 @@ $authKeyResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tail
 $authKey = $authKeyResponse.key
 
 # Xoá thiết bị cũ nếu có cùng NODE_NAME
-if ($hostname) {
-    $devicesResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/devices" `
-        -Headers @{ "Authorization" = "Bearer $TOKEN" } `
-        -Method Get
+# if ($hostname) {
+#     $devicesResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/devices" `
+#         -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+#         -Method Get
 
-    $dupDevices = $devicesResponse.devices | Where-Object { $_.hostname -like "*$($hostname)*" }
+#     $dupDevices = $devicesResponse.devices | Where-Object { $_.hostname -like "*$($hostname)*" }
 
-    foreach ($d in $dupDevices) {
-        Write-Host "Deleting device $($d.id)"
-        Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/device/$($d.id)" `
-            -Headers @{ "Authorization" = "Bearer $TOKEN" } `
-            -Method Delete
-    }
-}
+#     foreach ($d in $dupDevices) {
+#         Write-Host "Deleting device $($d.id)"
+#         Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/device/$($d.id)" `
+#             -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+#             -Method Delete
+#     }
+# }
 
 
 
