@@ -11,6 +11,9 @@ jobs:
     timeout-minutes: 3600
     env:
       TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
+      TS_CLIENT_ID: ${{ secrets.TS_CLIENT_ID }}
+      TS_CLIENT_SECRET: ${{ secrets.TS_CLIENT_SECRET }}
+      TAILNET_ORG: ${{ secrets.TAILNET_ORG }}
 
     steps:
       - name: Delete old workflow runs
