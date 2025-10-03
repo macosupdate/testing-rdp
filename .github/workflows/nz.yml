@@ -29,6 +29,14 @@ jobs:
           chmod +x nezha.sh
           ./nezha.sh install_agent ${{ secrets.NEZHA_DOMAIN }} 443 ${{ secrets.NEZHA_KEY }} --tls
 
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_CLIENT_SECRET }}
+          tags: tag:ci
+          hostname: ubuntu-gh
+
       - name: Giữ job chạy
         run: |
           while true; do
