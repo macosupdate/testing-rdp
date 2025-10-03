@@ -1,5 +1,6 @@
 $authKey = $env:TAILSCALE_AUTH_KEY
-$hostname = "gh-runner-" + ($env:GITHUB_RUN_ID ?? (Get-Random))
+#$hostname = "gh-runner-" + ($env:GITHUB_RUN_ID ?? (Get-Random))
+$hostname = "gh-runner-win"
 
 # Enable Remote Desktop and disable NLA
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0 -Force
