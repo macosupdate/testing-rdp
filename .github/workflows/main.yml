@@ -26,6 +26,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_CLIENT_SECRET }}
+          tags: tag:github
+          hostname: windows-gh
+
       - name: Run PowerShell script
         run: ./script/test.ps1
         shell: pwsh
