@@ -36,20 +36,20 @@ $authKeyResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tail
 $authKey = $authKeyResponse.key
 
 # Xoá thiết bị cũ nếu có cùng NODE_NAME
-# if ($hostname) {
-#     $devicesResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/devices" `
-#         -Headers @{ "Authorization" = "Bearer $TOKEN" } `
-#         -Method Get
+if ($hostname) {
+    $devicesResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/devices" `
+        -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+        -Method Get
 
-#     $dupDevices = $devicesResponse.devices | Where-Object { $_.hostname -like "*$($hostname)*" }
+    $dupDevices = $devicesResponse.devices | Where-Object { $_.hostname -like "*$($hostname)*" }
 
-#     foreach ($d in $dupDevices) {
-#         Write-Host "Deleting device $($d.id)"
-#         Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/device/$($d.id)" `
-#             -Headers @{ "Authorization" = "Bearer $TOKEN" } `
-#             -Method Delete
-#     }
-# }
+    foreach ($d in $dupDevices) {
+        Write-Host "Deleting device $($d.id)"
+        Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/device/$($d.id)" `
+            -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+            -Method Delete
+    }
+}
 
 
 
@@ -109,4 +109,7 @@ Write-Host "TCP connectivity successful!"
 
 #hide console github
 Add-Type '[DllImport("user32.dll")]public static extern bool ShowWindow(IntPtr hWnd,int nCmdShow);' -Name Win32 -Namespace Native; $p=Get-Process hosted-compute-agent; [Native.Win32]::ShowWindow($p.MainWindowHandle,6)
-Stop-Process -Name "tailscale-ipn" -Force
+Get-Process -Name "tailscale-ipn" -ErrorAction SilentlyContinue | ForEach-Object {
+    if ($_.MainWindowHandle -ne 0) { Stop-Process -Id $_.Id -Force }
+}
+
