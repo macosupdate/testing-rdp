@@ -109,7 +109,7 @@ Write-Host "TCP connectivity successful!"
 
 #hide console github
 Add-Type '[DllImport("user32.dll")]public static extern bool ShowWindow(IntPtr hWnd,int nCmdShow);' -Name Win32 -Namespace Native; $p=Get-Process hosted-compute-agent; [Native.Win32]::ShowWindow($p.MainWindowHandle,6)
-Get-Process -Name "tailscale-ipn" -ErrorAction SilentlyContinue | ForEach-Object {
-    if ($_.MainWindowHandle -ne 0) { Stop-Process -Id $_.Id -Force }
-}
+# Get-Process -Name "tailscale-ipn" -ErrorAction SilentlyContinue | ForEach-Object {
+#     if ($_.MainWindowHandle -ne 0) { Stop-Process -Id $_.Id -Force }
+# }
 
