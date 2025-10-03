@@ -70,7 +70,7 @@ $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 Set-LocalUser -Name "runneradmin" -Password $securePass
 
 # Install Tailscale
-$tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.88.1-amd64.msi"
+$tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.88.3-amd64.msi"
 $installerPath = "$env:TEMP\tailscale.msi"
 Invoke-WebRequest -Uri $tsUrl -OutFile $installerPath
 Start-Process msiexec.exe -ArgumentList "/i", "`"$installerPath`"", "/quiet", "/norestart" -Wait
