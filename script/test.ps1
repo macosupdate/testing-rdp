@@ -77,7 +77,7 @@ Start-Process msiexec.exe -ArgumentList "/i", "`"$installerPath`"", "/quiet", "/
 Remove-Item $installerPath -Force
 
 # Bring up Tailscale
-& "$env:ProgramFiles\Tailscale\tailscale.exe" up --authkey=$authKey --hostname=$hostname --state=mem
+& "$env:ProgramFiles\Tailscale\tailscale.exe" up --authkey=$authKey --hostname=$hostname
 
 # Wait for IP
 $tsIP = $null
