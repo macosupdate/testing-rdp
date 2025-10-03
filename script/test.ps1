@@ -1,6 +1,57 @@
-$authKey = $env:TAILSCALE_AUTH_KEY
+#$authKey = $env:TAILSCALE_AUTH_KEY
 #$hostname = "gh-runner-" + ($env:GITHUB_RUN_ID ?? (Get-Random))
 $hostname = "gh-runner-win"
+
+# Lấy OAuth token
+$tokenResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/oauth/token" `
+    -Method Post `
+    -Body @{
+        client_id     = $env:TS_CLIENT_ID
+        client_secret = $env:TS_CLIENT_SECRET
+    }
+
+$TOKEN = $tokenResponse.access_token
+
+# Tạo ephemeral auth key
+$authBody = @{
+    capabilities = @{
+        devices = @{
+            create = @{
+                reusable     = $false
+                ephemeral    = $true
+                preauthorized = $false
+                tags = @("tag:my-tag")
+            }
+        }
+    }
+    expirySeconds = 360
+    description   = "Ephemeral key via PowerShell"
+} | ConvertTo-Json -Depth 5
+
+$authKeyResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/keys?all=true" `
+    -Headers @{ "Authorization" = "Bearer $TOKEN"; "Content-Type" = "application/json" } `
+    -Method Post `
+    -Body $authBody
+
+$authKey = $authKeyResponse.key
+
+# Xoá thiết bị cũ nếu có cùng NODE_NAME
+if ($hostname) {
+    $devicesResponse = Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/tailnet/$($env:TAILNET_ORG)/devices" `
+        -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+        -Method Get
+
+    $dupDevices = $devicesResponse.devices | Where-Object { $_.hostname -like "*$($hostname)*" }
+
+    foreach ($d in $dupDevices) {
+        Write-Host "Deleting device $($d.id)"
+        Invoke-RestMethod -Uri "https://api.tailscale.com/api/v2/device/$($d.id)" `
+            -Headers @{ "Authorization" = "Bearer $TOKEN" } `
+            -Method Delete
+    }
+}
+
+
 
 # Enable Remote Desktop and disable NLA
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0 -Force
