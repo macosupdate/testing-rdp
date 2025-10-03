@@ -20,7 +20,7 @@ $authBody = @{
                 reusable     = $false
                 ephemeral    = $true
                 preauthorized = $false
-                tags = @("tag:my-tag")
+                tags = @("tag:github")
             }
         }
     }
