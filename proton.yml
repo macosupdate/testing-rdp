@@ -6,23 +6,21 @@ x-shared: &shared-gluetun
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
-
-x-common-environment: &common-environment
-  VPN_SERVICE_PROVIDER: protonvpn
-  VPN_TYPE: wireguard
-  WIREGUARD_PRIVATE_KEY: uISgD8gKUHG/0nHxCxl3Kp4+syopegv3zpBd0dxPelo=
-  FREE_ONLY: "on"
-  HTTPPROXY: "on"
-  HTTPPROXY_STEALTH: "on"
-  BLOCK_MALICIOUS: "off"
-  BLOCK_SURVEILLANCE: "off"
-  BLOCK_ADS: "off"
+  
 
 services:
   gluetun:
     <<: *shared-gluetun
     environment:
-      <<: *common-environment
+      VPN_SERVICE_PROVIDER: protonvpn
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: uISgD8gKUHG/0nHxCxl3Kp4+syopegv3zpBd0dxPelo=
+      FREE_ONLY: "on"
+      HTTPPROXY: "on"
+      HTTPPROXY_STEALTH: "on"
+      BLOCK_MALICIOUS: "off"
+      BLOCK_SURVEILLANCE: "off"
+      BLOCK_ADS: "off"
       SERVER_HOSTNAMES: node-jp-13.protonvpn.net
       HTTPPROXY_LISTENING_ADDRESS: 8080
     ports:
@@ -31,7 +29,15 @@ services:
   gluetun2:
     <<: *shared-gluetun
     environment:
-      <<: *common-environment
+      VPN_SERVICE_PROVIDER: protonvpn
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: uISgD8gKUHG/0nHxCxl3Kp4+syopegv3zpBd0dxPelo=
+      FREE_ONLY: "on"
+      HTTPPROXY: "on"
+      HTTPPROXY_STEALTH: "on"
+      BLOCK_MALICIOUS: "off"
+      BLOCK_SURVEILLANCE: "off"
+      BLOCK_ADS: "off"
       SERVER_HOSTNAMES: node-nl-149.protonvpn.net
       HTTPPROXY_LISTENING_ADDRESS: 8081
     ports:
