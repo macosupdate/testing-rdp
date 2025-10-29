@@ -1,0 +1,39 @@
+
+
+name: proton
+
+on:
+  workflow_dispatch:
+
+jobs:
+  testing-rdp:
+    runs-on: windows-latest
+    timeout-minutes: 3600
+    env:
+      TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
+      TS_CLIENT_ID: ${{ secrets.TS_CLIENT_ID }}
+      TS_CLIENT_SECRET: ${{ secrets.TS_CLIENT_SECRET }}
+      TAILNET_ORG: ${{ secrets.TAILNET_ORG }}
+
+    steps:
+      - name: Delete old workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          repository: ${{ github.repository }}
+          older-than-seconds: 3600
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_CLIENT_SECRET }}
+          tags: tag:github
+          hostname: proton-gh
+
+      - name: Run Docker compose
+        run: docker compose up
+        shell: pwsh
