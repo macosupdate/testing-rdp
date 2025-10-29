@@ -35,5 +35,4 @@ jobs:
           hostname: proton-gh
 
       - name: Run Docker compose
-        run: docker compose up
-        shell: pwsh
+        run: docker compose -f proton.yml up
