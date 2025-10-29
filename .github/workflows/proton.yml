@@ -33,6 +33,7 @@ jobs:
           oauth-secret: ${{ secrets.TS_CLIENT_SECRET }}
           tags: tag:github
           hostname: proton-gh
+          args: --force-reauth
 
       - name: Run Docker compose
         run: |
