@@ -1,7 +1,7 @@
 version: "3.9"
 
 x-shared: &shared-gluetun
-  image: qmcgaw/gluetun
+  image: ghcr.io/qdm12/gluetun
   cap_add:
     - NET_ADMIN
   devices:
