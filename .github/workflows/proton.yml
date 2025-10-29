@@ -7,7 +7,7 @@ on:
 
 jobs:
   testing-rdp:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 3600
     env:
       TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
@@ -35,4 +35,5 @@ jobs:
           hostname: proton-gh
 
       - name: Run Docker compose
-        run: docker compose -f proton.yml up
+        run: |
+          docker compose -f proton.yml up
