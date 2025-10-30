@@ -7,6 +7,10 @@ on:
   repository_dispatch:
     types: [deploy-job]
 
+concurrency:
+  group: proton
+  cancel-in-progress: false
+  
 jobs:
   testing-rdp:
     runs-on: ubuntu-latest
