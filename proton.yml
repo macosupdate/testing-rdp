@@ -4,6 +4,7 @@ x-shared: &shared-gluetun
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
+  restart: always
 
 x-common-environment: &common-environment
   VPN_SERVICE_PROVIDER: protonvpn
