@@ -108,3 +108,291 @@ services:
       HTTPPROXY_LISTENING_ADDRESS: ":8009"
     ports:
       - 8009:8009
+
+  MX-FREE-5:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-mx-09.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8010"
+    ports:
+      - 8010:8010
+
+  NL-FREE-1:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-02.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8011"
+    ports:
+      - 8011:8011
+
+  NL-FREE-12:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-57.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8012"
+    ports:
+      - 8012:8012
+
+  NL-FREE-13:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-03.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8013"
+    ports:
+      - 8013:8013
+
+  NL-FREE-14:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-04.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8014"
+    ports:
+      - 8014:8014
+
+  NL-FREE-16:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-06.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8015"
+    ports:
+      - 8015:8015
+
+  NL-FREE-218:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-244.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8016"
+    ports:
+      - 8016:8016
+
+  NL-FREE-219:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-245.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8017"
+    ports:
+      - 8017:8017
+
+  NL-FREE-220:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-246.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8018"
+    ports:
+      - 8018:8018
+
+  NL-FREE-221:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-247.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8019"
+    ports:
+      - 8019:8019
+
+  NL-FREE-233:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-259.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8020"
+    ports:
+      - 8020:8020
+
+  NL-FREE-234:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-260.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8021"
+    ports:
+      - 8021:8021
+
+  NL-FREE-251:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-277.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8022"
+    ports:
+      - 8022:8022
+
+  NL-FREE-34:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-114.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8023"
+    ports:
+      - 8023:8023
+
+NL-FREE-35:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-115.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8024"
+    ports:
+      - 8024:8024
+
+NL-FREE-38:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-101.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8025"
+    ports:
+      - 8025:8025
+
+  NL-FREE-43:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-70.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8026"
+    ports:
+      - 8026:8026
+
+  NL-FREE-45:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-75.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8027"
+    ports:
+      - 8027:8027
+
+  NL-FREE-49:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-75.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8028"
+    ports:
+      - 8028:8028
+
+  NL-FREE-50:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-76.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8029"
+    ports:
+      - 8029:8029
+
+  NL-FREE-53:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-79.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8030"
+    ports:
+      - 8030:8030
+
+  NL-FREE-55:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-81.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8031"
+    ports:
+      - 8031:8031
+
+  NL-FREE-56:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-82.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8032"
+    ports:
+      - 8032:8032
+
+  NL-FREE-57:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-83.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8033"
+    ports:
+      - 8033:8033
+      
+  NL-FREE-64:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-90.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8034"
+    ports:
+      - 8034:8034
+
+  NL-FREE-65:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-91.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8035"
+    ports:
+      - 8035:8035
+
+  NL-FREE-66:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-92.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8036"
+    ports:
+      - 8036:8036
+
+  NL-FREE-67:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-93.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8037"
+    ports:
+      - 8037:8037
+
+  NL-FREE-68:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-94.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8038"
+    ports:
+      - 8038:8038
+
+  NL-FREE-69:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-95.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8039"
+    ports:
+      - 8039:8039
+
+  NL-FREE-70:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-96.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8040"
+    ports:
+      - 8040:8040
+
+  NL-FREE-71:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-nl-97.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8041"
+    ports:
+      - 8041:8041
