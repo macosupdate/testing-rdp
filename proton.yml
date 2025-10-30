@@ -8,7 +8,7 @@ x-shared: &shared-gluetun
 x-common-environment: &common-environment
   VPN_SERVICE_PROVIDER: protonvpn
   VPN_TYPE: wireguard
-  WIREGUARD_PRIVATE_KEY: uISgD8gKUHG/0nHxCxl3Kp4+syopegv3zpBd0dxPelo=
+  WIREGUARD_PRIVATE_KEY: ${PROTON_PRIVATE_KEY}
   FREE_ONLY: "on"
   HTTPPROXY: "on"
   HTTPPROXY_STEALTH: "on"
