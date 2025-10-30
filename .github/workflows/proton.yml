@@ -11,8 +11,8 @@ jobs:
     timeout-minutes: 3600
     env:
       TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
-      TS_CLIENT_ID: ${{ secrets.TS_CLIENT_ID }}
-      TS_CLIENT_SECRET: ${{ secrets.TS_CLIENT_SECRET }}
+      TS_CLIENT_ID: ${{ secrets.QUY_TS_CLIENT_ID }}
+      TS_CLIENT_SECRET: ${{ secrets.QUY_TS_CLIENT_SECRET }}
       TAILNET_ORG: ${{ secrets.TAILNET_ORG }}
 
     steps:
@@ -29,8 +29,8 @@ jobs:
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
-          oauth-client-id: ${{ secrets.TS_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_CLIENT_SECRET }}
+          oauth-client-id: ${{ secrets.QUY_TS_CLIENT_ID }}
+          oauth-secret: ${{ secrets.QUY_TS_CLIENT_SECRET }}
           tags: tag:github
           hostname: proton-gh
           args: --force-reauth
