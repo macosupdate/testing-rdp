@@ -19,7 +19,7 @@ x-common-environment: &common-environment
   BLOCK_ADS: "off"
 
 services:
-  gluetun:
+  JP-FREE-3:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
@@ -28,11 +28,83 @@ services:
     ports:
       - 8000:8000
 
-  gluetun2:
+  JP-FREE-7:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: node-nl-149.protonvpn.net
+      SERVER_HOSTNAMES: node-jp-15.protonvpn.net
       HTTPPROXY_LISTENING_ADDRESS: ":8001"
     ports:
       - 8001:8001
+
+  JP-FREE-1:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-11.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8002"
+    ports:
+      - 8002:8002
+
+  JP-FREE-2:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-16.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8003"
+    ports:
+      - 8003:8003
+
+  JP-FREE-4:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-18.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8004"
+    ports:
+      - 8004:8004
+
+  JP-FREE-5:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-19.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8005"
+    ports:
+      - 8005:8005
+
+  JP-FREE-6:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-20.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8006"
+    ports:
+      - 8006:8006
+
+  JP-FREE-6:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-20.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8007"
+    ports:
+      - 8007:8007
+
+  JP-FREE-8:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-jp-21.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8008"
+    ports:
+      - 8008:8008
+
+  MX-FREE-1:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: node-mx-05.protonvpn.net
+      HTTPPROXY_LISTENING_ADDRESS: ":8009"
+    ports:
+      - 8009:8009
