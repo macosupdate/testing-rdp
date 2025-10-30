@@ -82,14 +82,6 @@ services:
     ports:
       - 8006:8006
 
-  JP-FREE-6:
-    <<: *shared-gluetun
-    environment:
-      <<: *common-environment
-      SERVER_HOSTNAMES: node-jp-20.protonvpn.net
-      HTTPPROXY_LISTENING_ADDRESS: ":8007"
-    ports:
-      - 8007:8007
 
   JP-FREE-8:
     <<: *shared-gluetun
