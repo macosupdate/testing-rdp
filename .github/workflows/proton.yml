@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Docker compose
         run: |
-          docker compose -f proton.yml up
+          docker compose -f proton.yml up -d
 
       - name: Delete old workflow runs
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
