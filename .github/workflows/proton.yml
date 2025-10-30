@@ -15,7 +15,7 @@ jobs:
       TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
       TS_CLIENT_ID: ${{ secrets.QUY_TS_CLIENT_ID }}
       TS_CLIENT_SECRET: ${{ secrets.QUY_TS_CLIENT_SECRET }}
-      TAILNET_ORG: ${{ secrets.TAILNET_ORG }}
+      PROTON_PRIVATE_KEY: ${{ secrets.PROTON_PRIVATE_KEY }}
 
     steps:
       - name: Checkout code
