@@ -4,6 +4,8 @@ name: proton
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-job]
 
 jobs:
   testing-rdp:
@@ -16,16 +18,8 @@ jobs:
       TAILNET_ORG: ${{ secrets.TAILNET_ORG }}
 
     steps:
-      - name: Delete old workflow runs
-        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          repository: ${{ github.repository }}
-          older-than-seconds: 3600
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
@@ -38,3 +32,24 @@ jobs:
       - name: Run Docker compose
         run: |
           docker compose -f proton.yml up
+
+      - name: Delete old workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          repository: ${{ github.repository }}
+          older-than-seconds: 3600
+
+      - name: Do your work
+        run: |
+          echo "Running job at $(date)"
+          sleep 5.8h
+      - name: Trigger next run
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type":"deploy-job"}'
+      
