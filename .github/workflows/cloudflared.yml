@@ -1,9 +1,9 @@
-name: Sync cloudflare/cloudflared → GHCR
+name: Sync Docker Hub images → GHCR
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # Kiểm tra mỗi 6 tiếng
-  workflow_dispatch:         # Cho phép chạy thủ công
+    - cron: "0 */6 * * *"  # Chạy mỗi 6 tiếng
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -14,45 +14,48 @@ jobs:
       packages: write
 
     steps:
-      - name: Set variables
-        run: |
-          echo "IMAGE_SRC=cloudflare/cloudflared" >> $GITHUB_ENV
-          echo "IMAGE_DEST=ghcr.io/${{ github.repository_owner }}/cloudflared" >> $GITHUB_ENV
-          echo "TAG=latest" >> $GITHUB_ENV
-
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Get Docker Hub digest
-        id: hub
-        run: |
-          HUB_DIGEST=$(docker manifest inspect $IMAGE_SRC:$TAG --verbose | jq -r '.[0].Digest')
-          echo "digest=$HUB_DIGEST" >> $GITHUB_OUTPUT
-          echo "Docker Hub digest: $HUB_DIGEST"
-
-      - name: Log in to GitHub Container Registry
+      - name: Log in to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Get GHCR digest (if exists)
-        id: ghcr
+      - name: Define image list
+        id: images
         run: |
-          if docker manifest inspect $IMAGE_DEST:$TAG --verbose >/dev/null 2>&1; then
-            GHCR_DIGEST=$(docker manifest inspect $IMAGE_DEST:$TAG --verbose | jq -r '.[0].Digest')
-            echo "digest=$GHCR_DIGEST" >> $GITHUB_OUTPUT
-            echo "GHCR digest: $GHCR_DIGEST"
-          else
-            echo "digest=" >> $GITHUB_OUTPUT
-            echo "GHCR image not found."
-          fi
+          cat <<'EOF' > images.txt
+          cloudflare/cloudflared:latest
+          litestream/litestream:latest
+          EOF
+          echo "Defined images:"
+          cat images.txt
 
-      - name: Compare and push if different
-        if: steps.hub.outputs.digest != steps.ghcr.outputs.digest
+      - name: Sync each image
         run: |
-          echo "New version detected → syncing image..."
-          docker pull $IMAGE_SRC:$TAG
-          docker tag $IMAGE_SRC:$TAG $IMAGE_DEST:$TAG
-          docker push $IMAGE_DEST:$TAG
+          while read -r line; do
+            [ -z "$line" ] && continue
+            IMAGE_SRC=$(echo "$line" | cut -d':' -f1)
+            TAG=$(echo "$line" | cut -d':' -f2)
+            NAME=$(basename "$IMAGE_SRC")
+            IMAGE_DEST="ghcr.io/${{ github.repository_owner }}/$NAME"
 
-      - name: Skip if same digest
-        if: steps.hub.outputs.digest == steps.ghcr.outputs.digest
-        run: echo "No new version — skip push ✅"
+            echo "------------------------------"
+            echo "🔍 Checking: $IMAGE_SRC:$TAG → $IMAGE_DEST:$TAG"
+            echo "------------------------------"
+
+            HUB_DIGEST=$(docker manifest inspect "$IMAGE_SRC:$TAG" --verbose | jq -r '.[0].Digest')
+            echo "Docker Hub digest: $HUB_DIGEST"
+
+            GHCR_DIGEST=$(docker manifest inspect "$IMAGE_DEST:$TAG" --verbose 2>/dev/null | jq -r '.[0].Digest' || echo "")
+
+            if [ "$HUB_DIGEST" != "$GHCR_DIGEST" ]; then
+              echo "🆕 New version detected for $NAME → syncing..."
+              docker pull "$IMAGE_SRC:$TAG"
+              docker tag "$IMAGE_SRC:$TAG" "$IMAGE_DEST:$TAG"
+              docker push "$IMAGE_DEST:$TAG"
+            else
+              echo "✅ $NAME is up to date."
+            fi
+
+            echo
+          done < images.txt
