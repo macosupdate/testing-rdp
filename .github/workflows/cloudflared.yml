@@ -1,0 +1,58 @@
+name: Sync cloudflare/cloudflared → GHCR
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # Kiểm tra mỗi 6 tiếng
+  workflow_dispatch:         # Cho phép chạy thủ công
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Set variables
+        run: |
+          echo "IMAGE_SRC=cloudflare/cloudflared" >> $GITHUB_ENV
+          echo "IMAGE_DEST=ghcr.io/${{ github.repository_owner }}/cloudflared" >> $GITHUB_ENV
+          echo "TAG=latest" >> $GITHUB_ENV
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Get Docker Hub digest
+        id: hub
+        run: |
+          HUB_DIGEST=$(docker manifest inspect $IMAGE_SRC:$TAG --verbose | jq -r '.[0].Digest')
+          echo "digest=$HUB_DIGEST" >> $GITHUB_OUTPUT
+          echo "Docker Hub digest: $HUB_DIGEST"
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Get GHCR digest (if exists)
+        id: ghcr
+        run: |
+          if docker manifest inspect $IMAGE_DEST:$TAG --verbose >/dev/null 2>&1; then
+            GHCR_DIGEST=$(docker manifest inspect $IMAGE_DEST:$TAG --verbose | jq -r '.[0].Digest')
+            echo "digest=$GHCR_DIGEST" >> $GITHUB_OUTPUT
+            echo "GHCR digest: $GHCR_DIGEST"
+          else
+            echo "digest=" >> $GITHUB_OUTPUT
+            echo "GHCR image not found."
+          fi
+
+      - name: Compare and push if different
+        if: steps.hub.outputs.digest != steps.ghcr.outputs.digest
+        run: |
+          echo "New version detected → syncing image..."
+          docker pull $IMAGE_SRC:$TAG
+          docker tag $IMAGE_SRC:$TAG $IMAGE_DEST:$TAG
+          docker push $IMAGE_DEST:$TAG
+
+      - name: Skip if same digest
+        if: steps.hub.outputs.digest == steps.ghcr.outputs.digest
+        run: echo "No new version — skip push ✅"
