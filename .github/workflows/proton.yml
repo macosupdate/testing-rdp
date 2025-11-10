@@ -24,6 +24,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Delete old workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          repository: ${{ github.repository }}
+          older-than-seconds: 3600
+
+      - name: Run Docker compose
+        run: |
+          docker compose -f proton.yml up -d
+        
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
@@ -33,17 +45,6 @@ jobs:
           hostname: proton-gh
           args: --force-reauth
 
-      - name: Run Docker compose
-        run: |
-          docker compose -f proton.yml up -d
-
-      - name: Delete old workflow runs
-        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          repository: ${{ github.repository }}
-          older-than-seconds: 3600
 
       - name: Do your work
         run: |
