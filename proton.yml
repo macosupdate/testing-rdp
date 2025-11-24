@@ -5,6 +5,8 @@ x-shared: &shared-gluetun
   devices:
     - /dev/net/tun:/dev/net/tun
   restart: always
+  labels:
+      autoheal-app: true
 
 x-common-environment: &common-environment
   VPN_SERVICE_PROVIDER: protonvpn
@@ -18,6 +20,17 @@ x-common-environment: &common-environment
   BLOCK_ADS: "off"
 
 services:
+
+  autoheal:
+    environment:
+      AUTOHEAL_CONTAINER_LABEL: autoheal-app
+    image: willfarrell/autoheal:latest
+    network_mode: none
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      
   JP-Osaka:
     <<: *shared-gluetun
     environment:
