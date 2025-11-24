@@ -64,7 +64,7 @@ jobs:
 
       - name: Run Docker compose
         run: |
-          docker compose -f proton.yml up
+          docker compose -f proton.yml up -d
         
       - name: Tailscale
         uses: tailscale/github-action@v3
