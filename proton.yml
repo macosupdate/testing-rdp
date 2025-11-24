@@ -5,6 +5,8 @@ x-shared: &shared-gluetun
   devices:
     - /dev/net/tun:/dev/net/tun
   restart: always
+  logging:
+          driver: none
   labels:
       autoheal-app: true
 
