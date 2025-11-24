@@ -59,165 +59,165 @@ services:
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}          
       
-  # JP-Osaka:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Osaka
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8000"
-  #   ports:
-  #     - 8000:8000
+  JP-Osaka:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Osaka
+      HTTPPROXY_LISTENING_ADDRESS: ":8000"
+    ports:
+      - 8000:8000
 
-  # JP-Tokyo:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Tokyo
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8001"
-  #   ports:
-  #     - 8001:8001
+  JP-Tokyo:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Tokyo
+      HTTPPROXY_LISTENING_ADDRESS: ":8001"
+    ports:
+      - 8001:8001
 
-  # NL-Amsterdam:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Netherlands
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8002"
-  #   ports:
-  #     - 8002:8002
+  NL-Amsterdam:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Netherlands
+      HTTPPROXY_LISTENING_ADDRESS: ":8002"
+    ports:
+      - 8002:8002
 
-  # Mexico:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Mexico
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8009"
-  #   ports:
-  #     - 8009:8009
+  Mexico:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Mexico
+      HTTPPROXY_LISTENING_ADDRESS: ":8009"
+    ports:
+      - 8009:8009
 
 
-  # Norway:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Norway
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8011"
-  #   ports:
-  #     - 8011:8011
+  Norway:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Norway
+      HTTPPROXY_LISTENING_ADDRESS: ":8011"
+    ports:
+      - 8011:8011
 
-  # Poland:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Poland
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8012"
-  #   ports:
-  #     - 8012:8012
+  Poland:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Poland
+      HTTPPROXY_LISTENING_ADDRESS: ":8012"
+    ports:
+      - 8012:8012
 
-  # Romania:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Romania
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8013"
-  #   ports:
-  #     - 8013:8013
+  Romania:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Romania
+      HTTPPROXY_LISTENING_ADDRESS: ":8013"
+    ports:
+      - 8013:8013
 
-  # Singapore:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Singapore
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8014"
-  #   ports:
-  #     - 8014:8014
+  Singapore:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Singapore
+      HTTPPROXY_LISTENING_ADDRESS: ":8014"
+    ports:
+      - 8014:8014
 
-  # Switzerland:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_COUNTRIES: Switzerland
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8015"
-  #   ports:
-  #     - 8015:8015
+  Switzerland:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_COUNTRIES: Switzerland
+      HTTPPROXY_LISTENING_ADDRESS: ":8015"
+    ports:
+      - 8015:8015
 
-  # US-Atlanta:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Atlanta
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8016"
-  #   ports:
-  #     - 8016:8016
+  US-Atlanta:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Atlanta
+      HTTPPROXY_LISTENING_ADDRESS: ":8016"
+    ports:
+      - 8016:8016
 
-  # US-Chicago:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Chicago
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8017"
-  #   ports:
-  #     - 8017:8017
+  US-Chicago:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Chicago
+      HTTPPROXY_LISTENING_ADDRESS: ":8017"
+    ports:
+      - 8017:8017
 
-  # US-Dallas:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Dallas
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8018"
-  #   ports:
-  #     - 8018:8018
+  US-Dallas:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Dallas
+      HTTPPROXY_LISTENING_ADDRESS: ":8018"
+    ports:
+      - 8018:8018
 
-  # US-Houston:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Houston
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8019"
-  #   ports:
-  #     - 8019:8019
+  US-Houston:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Houston
+      HTTPPROXY_LISTENING_ADDRESS: ":8019"
+    ports:
+      - 8019:8019
 
-  # US-Los-Angeles:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: "Los Angeles"
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8020"
-  #   ports:
-  #     - 8020:8020
+  US-Los-Angeles:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: "Los Angeles"
+      HTTPPROXY_LISTENING_ADDRESS: ":8020"
+    ports:
+      - 8020:8020
 
-  # US-Miami:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: Miami
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8021"
-  #   ports:
-  #     - 8021:8021
+  US-Miami:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: Miami
+      HTTPPROXY_LISTENING_ADDRESS: ":8021"
+    ports:
+      - 8021:8021
 
-  # US-New-York:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: "New York"
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8022"
-  #   ports:
-  #     - 8022:8022
+  US-New-York:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: "New York"
+      HTTPPROXY_LISTENING_ADDRESS: ":8022"
+    ports:
+      - 8022:8022
 
-  # US-San-Jose:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     <<: *common-environment
-  #     SERVER_CITIES: "San Jose"
-  #     HTTPPROXY_LISTENING_ADDRESS: ":8023"
-  #   ports:
-  #     - 8023:8023
+  US-San-Jose:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_CITIES: "San Jose"
+      HTTPPROXY_LISTENING_ADDRESS: ":8023"
+    ports:
+      - 8023:8023
 
-  # US-Seattle:
-  #     <<: *shared-gluetun
-  #     environment:
-  #       <<: *common-environment
-  #       SERVER_CITIES: Seattle
-  #       HTTPPROXY_LISTENING_ADDRESS: ":8024"
-  #     ports:
-  #       - 8024:8024
+  US-Seattle:
+      <<: *shared-gluetun
+      environment:
+        <<: *common-environment
+        SERVER_CITIES: Seattle
+        HTTPPROXY_LISTENING_ADDRESS: ":8024"
+      ports:
+        - 8024:8024
