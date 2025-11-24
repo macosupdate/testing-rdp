@@ -31,6 +31,21 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
       
+  firefox:
+    image: ghcr.io/jlesage/firefox:latest
+    volumes:
+      - "/home/runner/firefox:/config:rw"
+    environment:
+      - DISPLAY_WIDTH=1366
+      - DISPLAY_HEIGHT=768
+      - VNC_LISTENING_PORT=-1
+    restart: always
+    labels:
+      autoheal-app: true
+    logging:
+          driver: none
+          
+      
   JP-Osaka:
     <<: *shared-gluetun
     environment:
