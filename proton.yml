@@ -48,6 +48,13 @@ services:
     logging:
           driver: none
           
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    labels:
+      autoheal-app: true
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}          
       
   JP-Osaka:
     <<: *shared-gluetun
