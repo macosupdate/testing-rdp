@@ -45,8 +45,8 @@ services:
     restart: always
     labels:
       autoheal-app: true
-    logging:
-          driver: none
+    # logging:
+    #       driver: none
           
   cloudflared:
     image: cloudflare/cloudflared:latest
