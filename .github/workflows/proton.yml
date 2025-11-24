@@ -7,9 +7,9 @@ on:
   repository_dispatch:
     types: [deploy-job]
 
-concurrency:
-  group: proton
-  cancel-in-progress: false
+# concurrency:
+#   group: proton
+#   cancel-in-progress: false
   
 jobs:
   testing-rdp:
@@ -22,6 +22,14 @@ jobs:
       PROTON_PRIVATE_KEY: ${{ secrets.PROTON_PRIVATE_KEY }}
 
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          all_but_latest: true
+      - name: sleep
+        run: |
+          sleep 1m
+          
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Delete old workflow runs
