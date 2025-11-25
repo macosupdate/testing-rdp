@@ -87,6 +87,8 @@ jobs:
           name: firefox
           path: |
             /home/runner
+          exclude-paths: |
+            /home/runner/firefox/profile/cache*
           retention-days: 90
           compression-level: 6
           continue-on-error: true
