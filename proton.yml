@@ -32,7 +32,14 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      
+
+  nginx:
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    volumes:
+      - /home/runner/nginx:/data
+      - ./letsencrypt:/etc/letsencrypt
+  
   firefox:
     image: ghcr.io/jlesage/firefox:latest
     volumes:
