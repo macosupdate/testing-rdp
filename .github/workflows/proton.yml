@@ -42,7 +42,7 @@ jobs:
         with:
           name: firefox
           # path: /var/lib/docker/volumes/argosbx_n8n_data/_data
-          path: /home/runner
+          path: /home/runner/nginx
           run-id: ${{ env.artifact_run_id }}
           github-token: ${{ secrets.GH_TOKEN }}
         continue-on-error: true
@@ -86,7 +86,7 @@ jobs:
         with:
           name: firefox
           path: |
-            /home/runner
+            /home/runner/nginx
             !/home/runner/firefox/profile/cache*
           retention-days: 90
           compression-level: 6
