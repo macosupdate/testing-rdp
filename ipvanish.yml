@@ -1,0 +1,28 @@
+version: "3.9"
+
+x-shared: &shared-gluetun
+  image: qmcgaw/gluetun
+  cap_add:
+    - NET_ADMIN
+  devices:
+    - /dev/net/tun:/dev/net/tun
+
+x-common-environment: &common-environment
+  VPN_SERVICE_PROVIDER: ipvanish
+  OPENVPN_USER: ${OPENVPN_USER}
+  OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+  HTTPPROXY: "on"
+  HTTPPROXY_STEALTH: "on"
+  BLOCK_MALICIOUS: "off"
+  BLOCK_SURVEILLANCE: "off"
+  BLOCK_ADS: "off"
+
+services:
+  US-iad-b01:
+    <<: *shared-gluetun
+    environment:
+      SERVER_HOSTNAMES=iad-b01.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9000"
+    ports:
+      - 9000:9000
+
