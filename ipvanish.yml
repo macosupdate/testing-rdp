@@ -1,3 +1,5 @@
+name: ipvanish
+
 x-shared: &shared-gluetun
   image: qmcgaw/gluetun
   cap_add:
