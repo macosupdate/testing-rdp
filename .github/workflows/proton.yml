@@ -23,6 +23,8 @@ jobs:
       WEB_AUTHENTICATION_USERNAME: ${{secrets.WEB_AUTHENTICATION_USERNAME}}
       WEB_AUTHENTICATION_PASSWORD: ${{secrets.WEB_AUTHENTICATION_PASSWORD}}
       TUNNEL_TOKEN: ${{secrets.TUNNEL_TOKEN}}
+      OPENVPN_USER: ${{secrets.OPENVPN_USER}}
+      OPENVPN_PASSWORD: ${{secrets.OPENVPN_PASSWORD}}
       
 
     steps:
@@ -64,8 +66,8 @@ jobs:
 
       - name: Run Docker compose
         run: |
-          docker compose -f proton.yml up -d
           docker compose -f ipvanish.yml up -d
+          docker compose -f proton.yml up -d
         
       - name: Tailscale
         uses: tailscale/github-action@v3
