@@ -1,3 +1,5 @@
+name: proton
+
 x-shared: &shared-gluetun
   image: ghcr.io/qdm12/gluetun
   cap_add:
