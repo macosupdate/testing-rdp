@@ -70,7 +70,7 @@ jobs:
           name: firefox
           path: |
             /home/runner/nginx
-            /home/runner/firefox
+            /home/runner/firefox/**
             !/home/runner/firefox/profile/cache*
           retention-days: 90
           compression-level: 6
