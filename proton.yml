@@ -35,38 +35,38 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
 
-  nginx:
-    image: 'docker.io/jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    volumes:
-      - /home/runner/nginx:/data
-      - ./letsencrypt:/etc/letsencrypt
+  # nginx:
+  #   image: 'docker.io/jc21/nginx-proxy-manager:latest'
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /home/runner/nginx:/data
+  #     - ./letsencrypt:/etc/letsencrypt
   
-  firefox:
-    image: ghcr.io/jlesage/firefox:latest
-    volumes:
-      - "/home/runner/firefox:/config:rw"
-    environment:
-      - DISPLAY_WIDTH=1366
-      - DISPLAY_HEIGHT=768
-      - VNC_LISTENING_PORT=-1
-      # - WEB_AUTHENTICATION=1
-      # - WEB_AUTHENTICATION_USERNAME=${WEB_AUTHENTICATION_USERNAME}
-      # - WEB_AUTHENTICATION_PASSWORD=${WEB_AUTHENTICATION_PASSWORD}
-      # - SECURE_CONNECTION=1
-    restart: always
-    labels:
-      autoheal-app: true
-    # logging:
-    #       driver: none
+  # firefox:
+  #   image: ghcr.io/jlesage/firefox:latest
+  #   volumes:
+  #     - "/home/runner/firefox:/config:rw"
+  #   environment:
+  #     - DISPLAY_WIDTH=1366
+  #     - DISPLAY_HEIGHT=768
+  #     - VNC_LISTENING_PORT=-1
+  #     # - WEB_AUTHENTICATION=1
+  #     # - WEB_AUTHENTICATION_USERNAME=${WEB_AUTHENTICATION_USERNAME}
+  #     # - WEB_AUTHENTICATION_PASSWORD=${WEB_AUTHENTICATION_PASSWORD}
+  #     # - SECURE_CONNECTION=1
+  #   restart: always
+  #   labels:
+  #     autoheal-app: true
+  #   # logging:
+  #   #       driver: none
           
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    labels:
-      autoheal-app: true
-    command: tunnel --no-autoupdate run
-    environment:
-      - TUNNEL_TOKEN=${TUNNEL_TOKEN}          
+  # cloudflared:
+  #   image: cloudflare/cloudflared:latest
+  #   labels:
+  #     autoheal-app: true
+  #   command: tunnel --no-autoupdate run
+  #   environment:
+  #     - TUNNEL_TOKEN=${TUNNEL_TOKEN}          
       
   JP-Osaka:
     <<: *shared-gluetun
