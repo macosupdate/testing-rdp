@@ -63,15 +63,21 @@ jobs:
         run: |
           echo "Running job at $(date)"
           sleep 3m
-          
+
+      - name: Prepare files
+        run: |
+          mkdir ~/tmp
+          sudo cp -r /home/runner/nginx ~/tmp/nginx
+          sudo cp -r /home/runner/firefox ~/tmp/firefox
+          sudo chown -R runner:runner ~/tmp
+        
       - name: backup DB
         uses: actions/upload-artifact@v4
         with:
           name: firefox
           path: |
-            /home/runner/nginx
-            /home/runner/firefox
-            !/home/runner/firefox/profile/cache*
+            /home/runner/tmp
+            !/home/runner/tmp/firefox/profile/cache*
           retention-days: 90
           compression-level: 6
           continue-on-error: true
