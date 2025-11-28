@@ -1,0 +1,85 @@
+
+
+name: firefox
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-ff]
+
+# concurrency:
+#   group: proton
+#   cancel-in-progress: false
+  
+jobs:
+  testing-rdp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3600
+    env:
+      TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
+      TS_CLIENT_ID: ${{ secrets.QUY_TS_CLIENT_ID }}
+      TS_CLIENT_SECRET: ${{ secrets.QUY_TS_CLIENT_SECRET }}
+      PROTON_PRIVATE_KEY: ${{ secrets.PROTON_PRIVATE_KEY }}
+      WEB_AUTHENTICATION_USERNAME: ${{secrets.WEB_AUTHENTICATION_USERNAME}}
+      WEB_AUTHENTICATION_PASSWORD: ${{secrets.WEB_AUTHENTICATION_PASSWORD}}
+      TUNNEL_TOKEN: ${{secrets.TUNNEL_TOKEN}}
+      OPENVPN_USER: ${{secrets.OPENVPN_USER}}
+      OPENVPN_PASSWORD: ${{secrets.OPENVPN_PASSWORD}}
+      
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          all_but_latest: true
+          
+      - name: create folder
+        run: |
+          mkdir -p ~/firefox ~/nginx
+          ARTIFACT_RUN_ID=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=1" | jq '.artifacts[0].workflow_run.id')
+          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> $GITHUB_ENV
+                  
+      # - name: Download previous DB
+      #   uses: actions/download-artifact@v5
+      #   with:
+      #     name: firefox
+      #     # path: /var/lib/docker/volumes/argosbx_n8n_data/_data
+      #     path: /home/runner/nginx
+      #     run-id: ${{ env.artifact_run_id }}
+      #     github-token: ${{ secrets.GH_TOKEN }}
+      #   continue-on-error: true
+        
+          
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+
+      - name: Run Docker compose
+        run: |
+          docker compose -f firefox.yml up -d
+        
+
+      - name: Do your work
+        run: |
+          echo "Running job at $(date)"
+          sleep 5m
+          
+      - name: backup DB
+        uses: actions/upload-artifact@v4
+        with:
+          name: firefox
+          path: |
+            /home/runner/nginx
+            !/home/runner/firefox/profile/cache2
+          retention-days: 90
+          compression-level: 6
+          continue-on-error: true
+          
+      # - name: Trigger next run
+      #   run: |
+      #     curl -X POST \
+      #       -H "Accept: application/vnd.github+json" \
+      #       -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+      #       https://api.github.com/repos/${{ github.repository }}/dispatches \
+      #       -d '{"event_type":"deploy-job"}'
+      
