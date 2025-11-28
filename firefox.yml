@@ -22,13 +22,15 @@ services:
   
   firefox:
     image: ghcr.io/jlesage/firefox:latest
-    user: "0:0"
+    # user: "0:0"
     volumes:
       - "/home/runner/firefox:/config:rw"
     environment:
       - DISPLAY_WIDTH=1366
       - DISPLAY_HEIGHT=768
       - VNC_LISTENING_PORT=-1
+      - USER_ID=0
+      - GROUP_ID=0
       # - WEB_AUTHENTICATION=1
       # - WEB_AUTHENTICATION_USERNAME=${WEB_AUTHENTICATION_USERNAME}
       # - WEB_AUTHENTICATION_PASSWORD=${WEB_AUTHENTICATION_PASSWORD}
