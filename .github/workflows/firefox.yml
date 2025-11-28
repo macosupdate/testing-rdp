@@ -62,7 +62,7 @@ jobs:
       - name: Do your work
         run: |
           echo "Running job at $(date)"
-          sleep 5m
+          sleep 3m
           
       - name: backup DB
         uses: actions/upload-artifact@v4
@@ -70,7 +70,7 @@ jobs:
           name: firefox
           path: |
             /home/runner/nginx
-            /home/runner/firefox/**
+            /home/runner/firefox
             !/home/runner/firefox/profile/cache*
           retention-days: 90
           compression-level: 6
