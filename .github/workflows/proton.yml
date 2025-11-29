@@ -39,15 +39,15 @@ jobs:
           ARTIFACT_RUN_ID=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=1" | jq '.artifacts[0].workflow_run.id')
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> $GITHUB_ENV
                   
-      # - name: Download previous DB
-      #   uses: actions/download-artifact@v5
-      #   with:
-      #     name: firefox
-      #     # path: /var/lib/docker/volumes/argosbx_n8n_data/_data
-      #     path: /home/runner/nginx
-      #     run-id: ${{ env.artifact_run_id }}
-      #     github-token: ${{ secrets.GH_TOKEN }}
-      #   continue-on-error: true
+      - name: Download previous DB
+        uses: actions/download-artifact@v5
+        with:
+          name: firefox
+          # path: /var/lib/docker/volumes/argosbx_n8n_data/_data
+          path: /home/runner
+          run-id: ${{ env.artifact_run_id }}
+          github-token: ${{ secrets.GH_TOKEN }}
+        continue-on-error: true
         
       - name: sleep
         run: |
@@ -67,7 +67,7 @@ jobs:
       - name: Run Docker compose
         run: |
           docker compose -f ipvanish.yml up -d
-          docker compose -f proton.yml up -d
+          docker compose -f proton.yml -f firefox.yml up -d
         
       - name: Tailscale
         uses: tailscale/github-action@v3
@@ -84,16 +84,25 @@ jobs:
           echo "Running job at $(date)"
           sleep 5.8h
           
-      # - name: backup DB
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: firefox
-      #     path: |
-      #       /home/runner/nginx
-      #       !/home/runner/firefox/profile/cache*
-      #     retention-days: 90
-      #     compression-level: 6
-      #     continue-on-error: true
+      - name: Prepare files
+        run: |
+          mkdir ~/tmp
+          sudo cp -r /home/runner/nginx ~/tmp/nginx
+          sudo cp -r /home/runner/firefox ~/tmp/firefox
+          sudo chown -R runner:runner ~/tmp
+        
+      - name: backup DB
+        uses: actions/upload-artifact@v4
+        with:
+          name: firefox
+          path: |
+            /home/runner/tmp
+            !/home/runner/tmp/firefox/profile/cache2
+            !/home/runner/tmp/firefox/profile/OfflineCache
+            !/home/runner/tmp/firefox/profile/safebrowsing
+            !/home/runner/tmp/firefox/profile/settings
+            !/home/runner/tmp/firefox/profile/startupCache
+            !/home/runner/tmp/firefox/profile/thumbnails
           
       - name: Trigger next run
         run: |
