@@ -81,15 +81,16 @@ jobs:
       - name: backup DB
         uses: actions/upload-artifact@v4
         with:
-          name: firefox
+          name: firefox.age
           path: |
-            /home/runner/tmp
-            !/home/runner/tmp/firefox/profile/cache2
-            !/home/runner/tmp/firefox/profile/OfflineCache
-            !/home/runner/tmp/firefox/profile/safebrowsing
-            !/home/runner/tmp/firefox/profile/settings
-            !/home/runner/tmp/firefox/profile/startupCache
-            !/home/runner/tmp/firefox/profile/thumbnails
+            /home/runner/tmp.tar.gz.age
+            # /home/runner/tmp
+            # !/home/runner/tmp/firefox/profile/cache2
+            # !/home/runner/tmp/firefox/profile/OfflineCache
+            # !/home/runner/tmp/firefox/profile/safebrowsing
+            # !/home/runner/tmp/firefox/profile/settings
+            # !/home/runner/tmp/firefox/profile/startupCache
+            # !/home/runner/tmp/firefox/profile/thumbnails
           retention-days: 90
           compression-level: 6
           continue-on-error: true
