@@ -46,7 +46,7 @@ jobs:
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> $GITHUB_ENV
                   
       - name: Download previous DB
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6.0.0
         with:
           name: firefox
           # path: /var/lib/docker/volumes/argosbx_n8n_data/_data
