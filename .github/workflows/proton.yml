@@ -104,6 +104,11 @@ jobs:
             !/home/runner/tmp/firefox/profile/settings
             !/home/runner/tmp/firefox/profile/startupCache
             !/home/runner/tmp/firefox/profile/thumbnails
+
+      
+      - name: sleep
+        run: |
+          sleep 10m
           
       - name: Trigger next run
         run: |
