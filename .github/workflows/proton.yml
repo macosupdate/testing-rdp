@@ -5,7 +5,7 @@ name: proton
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [deploy-job]
+    types: [deploy-proton]
 
 # concurrency:
 #   group: proton
@@ -28,10 +28,16 @@ jobs:
       
 
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.12.1
-        with:
-          all_but_latest: true
+      # - name: Cancel Previous Runs
+      #   uses: styfle/cancel-workflow-action@0.12.1
+      #   with:
+      #     all_but_latest: true
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: sleep
+        run: |
+          sleep 2m
           
       - name: create folder
         run: |
@@ -50,8 +56,6 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
         continue-on-error: true
           
-      - name: Checkout code
-        uses: actions/checkout@v4
         
       - name: Delete old workflow runs
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
@@ -65,10 +69,7 @@ jobs:
         run: |
           docker compose -f ipvanish.yml up -d
           docker compose -f proton.yml -f firefox.yml up -d
-          
-      - name: sleep
-        run: |
-          sleep 1m
+    
           
       - name: Tailscale
         uses: tailscale/github-action@v3
@@ -105,10 +106,6 @@ jobs:
             !/home/runner/tmp/firefox/profile/startupCache
             !/home/runner/tmp/firefox/profile/thumbnails
 
-      
-      - name: sleep
-        run: |
-          sleep 10m
           
       - name: Trigger next run
         run: |
@@ -116,5 +113,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -d '{"event_type":"deploy-job"}'
+            -d '{"event_type":"deploy-proton"}'
       
