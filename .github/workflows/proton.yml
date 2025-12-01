@@ -51,7 +51,7 @@ jobs:
         
       - name: sleep
         run: |
-          sleep 1m
+          sleep 2m
           
       - name: Checkout code
         uses: actions/checkout@v4
