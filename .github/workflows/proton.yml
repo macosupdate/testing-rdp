@@ -48,10 +48,6 @@ jobs:
           run-id: ${{ env.artifact_run_id }}
           github-token: ${{ secrets.GH_TOKEN }}
         continue-on-error: true
-        
-      - name: sleep
-        run: |
-          sleep 2m
           
       - name: Checkout code
         uses: actions/checkout@v4
@@ -68,7 +64,11 @@ jobs:
         run: |
           docker compose -f ipvanish.yml up -d
           docker compose -f proton.yml -f firefox.yml up -d
-        
+          
+      - name: sleep
+        run: |
+          sleep 1m
+          
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
