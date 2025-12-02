@@ -48,7 +48,7 @@ jobs:
           
       - name: create folder
         run: |
-          docker create --name temp ghcr.io/${{ github.repository }}/firefox:latest
+          docker create --name temp ghcr.io/${{ github.repository }}/firefox:latest true
           docker cp temp:/app/firefox.tar.gz.age ~/
           mkdir -p ~/firefox ~/nginx
           age -d -i <(echo $AGE_SECRET_KEY) ~/firefox.tar.gz.age | ~/
