@@ -19,6 +19,8 @@ jobs:
       TAILSCALE_AUTH_KEY: ${{ secrets.TAILSCALE_AUTH_KEY }}
       TS_CLIENT_ID: ${{ secrets.QUY_TS_CLIENT_ID }}
       TS_CLIENT_SECRET: ${{ secrets.QUY_TS_CLIENT_SECRET }}
+      TAILNET_ORG: ${{ secrets.QUY_TAILNET_ORG }}
+      NODE_NAME: proton-gh
       PROTON_PRIVATE_KEY: ${{ secrets.PROTON_PRIVATE_KEY }}
       WEB_AUTHENTICATION_USERNAME: ${{secrets.WEB_AUTHENTICATION_USERNAME}}
       WEB_AUTHENTICATION_PASSWORD: ${{secrets.WEB_AUTHENTICATION_PASSWORD}}
@@ -65,10 +67,27 @@ jobs:
         run: |
           docker compose -f ipvanish.yml up -d
           docker compose -f proton.yml up -d
-    
-      - name: sleep
+          
+      - name: Get OAuth token
+        id: get_token
         run: |
-          sleep 2m
+          TOKEN=$(curl -s -X POST "https://api.tailscale.com/api/v2/oauth/token" \
+            -d "client_id=${TS_CLIENT_ID}&client_secret=${TS_CLIENT_SECRET}" | jq -r '.access_token')
+          echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+
+      - name: Delete old device if exists
+        if: env.NODE_NAME != ''
+        run: |
+          DEVICES=$(curl -s -H "Authorization: Bearer $TOKEN" \
+            "https://api.tailscale.com/api/v2/tailnet/${TAILNET_ORG}/devices")
+          
+          DEVICE_IDS=$(echo "$DEVICES" | jq -r --arg name "$NODE_NAME" '.devices[] | select(.hostname | test($name)) | .id')
+          
+          for id in $DEVICE_IDS; do
+            echo "Deleting device $id"
+            curl -s -X DELETE "https://api.tailscale.com/api/v2/device/$id" \
+              -H "Authorization: Bearer $TOKEN"
+          done
           
       - name: Tailscale
         uses: tailscale/github-action@v2
