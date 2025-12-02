@@ -25,6 +25,7 @@ jobs:
       TUNNEL_TOKEN: ${{secrets.TUNNEL_TOKEN}}
       OPENVPN_USER: ${{secrets.OPENVPN_USER}}
       OPENVPN_PASSWORD: ${{secrets.OPENVPN_PASSWORD}}
+      AGE_SECRET_KEY: ${{ secrets.AGE_SECRET_KEY }}
       
 
     steps:
