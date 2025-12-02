@@ -76,14 +76,14 @@ jobs:
           # sudo cp -r /home/runner/nginx ~/tmp/nginx
           # sudo cp -r /home/runner/firefox ~/tmp/firefox
           # sudo chown -R runner:runner ~/tmp
-          tar cvz /home/runner | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > ~/tmp.tar.gz.age
+          tar cvz /home/runner | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > ~/firefox.tar.gz.age
         
       - name: backup DB
         uses: actions/upload-artifact@v4
         with:
           name: firefox.age
           path: |
-            /home/runner/tmp.tar.gz.age
+            /home/runner/firefox.tar.gz.age
             # /home/runner/tmp
             # !/home/runner/tmp/firefox/profile/cache2
             # !/home/runner/tmp/firefox/profile/OfflineCache
