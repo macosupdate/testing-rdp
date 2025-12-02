@@ -34,10 +34,7 @@ jobs:
       #     all_but_latest: true
       - name: Checkout code
         uses: actions/checkout@v6.0.0
-        
-      - name: sleep
-        run: |
-          sleep 2m
+      
           
       - name: create folder
         run: |
@@ -69,12 +66,16 @@ jobs:
           docker compose -f ipvanish.yml up -d
           docker compose -f proton.yml up -d
     
+      - name: sleep
+        run: |
+          sleep 2m
           
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
           oauth-client-id: ${{ secrets.QUY_TS_CLIENT_ID }}
           oauth-secret: ${{ secrets.QUY_TS_CLIENT_SECRET }}
+          version: 1.90.9
           tags: tag:github
           hostname: proton-gh
 
