@@ -72,11 +72,11 @@ jobs:
 
       - name: Prepare files
         run: |
-          mkdir ~/tmp
-          sudo cp -r /home/runner/nginx ~/tmp/nginx
-          sudo cp -r /home/runner/firefox ~/tmp/firefox
-          sudo chown -R runner:runner ~/tmp
-          tar cvz ~/tmp | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > ~/tmp.tar.gz.age
+          # mkdir ~/tmp
+          # sudo cp -r /home/runner/nginx ~/tmp/nginx
+          # sudo cp -r /home/runner/firefox ~/tmp/firefox
+          # sudo chown -R runner:runner ~/tmp
+          tar cvz /home/runner | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > ~/tmp.tar.gz.age
         
       - name: backup DB
         uses: actions/upload-artifact@v4
@@ -92,7 +92,7 @@ jobs:
             # !/home/runner/tmp/firefox/profile/startupCache
             # !/home/runner/tmp/firefox/profile/thumbnails
           retention-days: 90
-          compression-level: 6
+          compression-level: 0
           continue-on-error: true
           
       # - name: Trigger next run
