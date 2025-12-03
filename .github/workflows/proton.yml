@@ -131,7 +131,7 @@ jobs:
           sudo cp -r /home/runner/nginx ~/tmp/nginx
           sudo cp -r /home/runner/firefox ~/tmp/firefox
           sudo chown -R runner:runner ~/tmp
-          tar cvz --exclude=/home/runner/tmp/firefox/profile/{cache2,OfflineCache,safebrowsing,settings,startupCache,thumbnails} /home/runner/tmp | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > $GITHUB_WORKSPACE/firefox.tar.gz.age
+          tar -C ~/tmp -cvz --exclude=/home/runner/tmp/firefox/profile/{cache2,OfflineCache,safebrowsing,settings,startupCache,thumbnails} nginx firefox | age -r age17e5pz635kejcszp2srn87tv6s64mzdd7g2ztskfz77jhujswtg2syzqqy8 > $GITHUB_WORKSPACE/firefox.tar.gz.age
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
