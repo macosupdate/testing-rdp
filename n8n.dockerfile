@@ -1,4 +1,4 @@
-FROM n8nio/n8n:1.82.3
+FROM n8nio/n8n:1.123.5
 
 # Install required tools
 USER root
