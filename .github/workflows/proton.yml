@@ -115,7 +115,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.QUY_TS_CLIENT_ID }}
           oauth-secret: ${{ secrets.QUY_TS_CLIENT_SECRET }}
-          version: 1.90.9
+          # version: 1.90.9
           tags: tag:github
           hostname: proton-gh
 
