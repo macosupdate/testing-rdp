@@ -111,72 +111,72 @@ services:
   US-iad-b11:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b11.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9011"
+      SERVER_HOSTNAMES: iad-b11.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9011"
     ports:
       - 9011:9011
 
   US-iad-b12:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b12.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9012"
+      SERVER_HOSTNAMES: iad-b12.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9012"
     ports:
       - 9012:9012
 
   US-iad-b13:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b13.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9013"
+      SERVER_HOSTNAMES: iad-b13.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9013"
     ports:
       - 9013:9013
 
   US-iad-b14:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b14.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9014"
+      SERVER_HOSTNAMES: iad-b14.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9014"
     ports:
       - 9014:9014
 
   US-iad-b16:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b16.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9016"
+      SERVER_HOSTNAMES: iad-b16.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9016"
     ports:
       - 9016:9016
 
   US-iad-b17:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b17.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9017"
+      SERVER_HOSTNAMES: iad-b17.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9017"
     ports:
       - 9017:9017
 
   US-iad-b18:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b18.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9018"
+      SERVER_HOSTNAMES: iad-b18.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9018"
     ports:
       - 9018:9018
 
   US-iad-b19:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b19.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9019"
+      SERVER_HOSTNAMES: iad-b19.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9019"
     ports:
       - 9019:9019
 
   US-iad-b20:
     <<: *shared-gluetun
     environment:
-      SERVER_HOSTNAMES=iad-b20.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS=":9020"
+      SERVER_HOSTNAMES: iad-b20.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9020"
     ports:
       - 9020:9020
 
