@@ -6,7 +6,7 @@ x-shared: &shared-gluetun
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
-  command: update -enduser -providers ipvanish
+  # command: update -enduser -providers ipvanish
 
 x-common-environment: &common-environment
   VPN_SERVICE_PROVIDER: ipvanish
