@@ -145,6 +145,15 @@ services:
     ports:
       - 9014:9014
 
+  US-iad-b15:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES: iad-b15.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS: ":9014"
+    ports:
+      - 9015:9015    
+
   US-iad-b16:
     <<: *shared-gluetun
     environment:
