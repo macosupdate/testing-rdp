@@ -6,6 +6,9 @@ x-shared: &shared-gluetun
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
+  volumes:
+      - ./servers.json:/gluetun/servers.json
+  
   # command: update -enduser -providers ipvanish
 
 x-common-environment: &common-environment
