@@ -1,13 +1,13 @@
 name: ipvanish
 
 x-shared: &shared-gluetun
-  image: qmcgaw/gluetun
+  image: qmcgaw/gluetun:pr-2586
   cap_add:
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
-  volumes:
-      - ./servers.json:/gluetun/servers.json:ro
+  # volumes:
+      # - ./servers.json:/gluetun/servers.json:ro
   
   # command: update -enduser -providers ipvanish
 
