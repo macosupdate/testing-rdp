@@ -202,82 +202,91 @@ services:
     ports:
       - 9020:9020
 
-  # US-iad-b21:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b21.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9021"
-  #   ports:
-  #     - 9021:9021
+  US-iad-b21:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b21.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9021"
+    ports:
+      - 9021:9021
 
-  # US-iad-b22:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b22.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9022"
-  #   ports:
-  #     - 9022:9022
+  US-iad-b22:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b22.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9022"
+    ports:
+      - 9022:9022
 
-  # US-iad-b23:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b23.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9023"
-  #   ports:
-  #     - 9023:9023
+  US-iad-b23:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b23.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9023"
+    ports:
+      - 9023:9023
 
-  # US-iad-b24:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b24.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9024"
-  #   ports:
-  #     - 9024:9024
+  US-iad-b24:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b24.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9024"
+    ports:
+      - 9024:9024
 
-  # US-iad-b25:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b25.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9025"
-  #   ports:
-  #     - 9025:9025
+  US-iad-b25:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b25.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9025"
+    ports:
+      - 9025:9025
 
-  # US-iad-b26:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b26.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9026"
-  #   ports:
-  #     - 9026:9026
+  US-iad-b26:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b26.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9026"
+    ports:
+      - 9026:9026
 
-  # US-iad-b27:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b27.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9027"
-  #   ports:
-  #     - 9027:9027
+  US-iad-b27:
+    <<: *shared-gluetun
+    environment:
+      SERVER_HOSTNAMES=iad-b27.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9027"
+    ports:
+      - 9027:9027
 
-  # US-iad-b28:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b28.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9028"
-  #   ports:
-  #     - 9028:9028
+  US-iad-b28:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b28.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9028"
+    ports:
+      - 9028:9028
 
-  # US-iad-b29:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b29.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9029"
-  #   ports:
-  #     - 9029:9029
+  US-iad-b29:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b29.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9029"
+    ports:
+      - 9029:9029
 
-  # US-iad-b30:
-  #   <<: *shared-gluetun
-  #   environment:
-  #     SERVER_HOSTNAMES=iad-b24.ipvanish.com
-  #     HTTPPROXY_LISTENING_ADDRESS=":9030"
-  #   ports:
-  #     - 9030:9030
+  US-iad-b30:
+    <<: *shared-gluetun
+    environment:
+      <<: *common-environment
+      SERVER_HOSTNAMES=iad-b24.ipvanish.com
+      HTTPPROXY_LISTENING_ADDRESS=":9030"
+    ports:
+      - 9030:9030
