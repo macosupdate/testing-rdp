@@ -216,7 +216,7 @@ services:
     environment:
       <<: *common-environment
       SERVER_HOSTNAMES: iad-b22.ipvanish.com
-      HTTPPROXY_LISTENING_ADDRESS:":9022"
+      HTTPPROXY_LISTENING_ADDRESS: ":9022"
     ports:
       - 9022:9022
 
