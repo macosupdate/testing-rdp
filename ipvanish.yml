@@ -6,6 +6,8 @@ x-shared: &shared-gluetun
     - NET_ADMIN
   devices:
     - /dev/net/tun:/dev/net/tun
+  labels:
+      autoheal-app: true
   # volumes:
       # - ./servers.json:/gluetun/servers.json:ro
   
