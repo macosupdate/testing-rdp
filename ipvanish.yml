@@ -28,7 +28,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b01.ipvanish.com
+      SERVER_HOSTNAMES: iad-b31.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9001"
     ports:
       - 9001:9001
@@ -37,7 +37,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b02.ipvanish.com
+      SERVER_HOSTNAMES: iad-b32.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9002"
     ports:
       - 9002:9002
@@ -46,7 +46,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b03.ipvanish.com
+      SERVER_HOSTNAMES: iad-b33.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9003"
     ports:
       - 9003:9003
@@ -55,7 +55,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b04.ipvanish.com
+      SERVER_HOSTNAMES: iad-b34.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9004"
     ports:
       - 9004:9004
@@ -64,7 +64,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b05.ipvanish.com
+      SERVER_HOSTNAMES: iad-b35.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9005"
     ports:
       - 9005:9005
@@ -73,7 +73,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b06.ipvanish.com
+      SERVER_HOSTNAMES: iad-b36.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9006"
     ports:
       - 9006:9006
@@ -82,7 +82,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b07.ipvanish.com
+      SERVER_HOSTNAMES: iad-b37.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9007"
     ports:
       - 9007:9007
@@ -91,7 +91,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b08.ipvanish.com
+      SERVER_HOSTNAMES: iad-b38.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9008"
     ports:
       - 9008:9008
@@ -100,7 +100,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b09.ipvanish.com
+      SERVER_HOSTNAMES: iad-b39.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9009"
     ports:
       - 9009:9009
@@ -109,7 +109,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b10.ipvanish.com
+      SERVER_HOSTNAMES: iad-b40.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9010"
     ports:
       - 9010:9010
@@ -118,7 +118,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b11.ipvanish.com
+      SERVER_HOSTNAMES: iad-b41.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9011"
     ports:
       - 9011:9011
@@ -127,7 +127,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b12.ipvanish.com
+      SERVER_HOSTNAMES: iad-b42.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9012"
     ports:
       - 9012:9012
@@ -136,7 +136,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b13.ipvanish.com
+      SERVER_HOSTNAMES: iad-b43.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9013"
     ports:
       - 9013:9013
@@ -145,7 +145,7 @@ services:
     <<: *shared-gluetun
     environment:
       <<: *common-environment
-      SERVER_HOSTNAMES: iad-b14.ipvanish.com
+      SERVER_HOSTNAMES: iad-b44.ipvanish.com
       HTTPPROXY_LISTENING_ADDRESS: ":9014"
     ports:
       - 9014:9014
