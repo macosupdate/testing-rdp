@@ -1,0 +1,170 @@
+name: ipvanish
+
+x-shared: &shared-gluetun
+  image: ghcr.io/macosupdate/vpngate
+  # image: qmcgaw/gluetun
+  cap_add:
+    - NET_ADMIN
+  devices:
+    - /dev/net/tun:/dev/net/tun
+  labels:
+      autoheal-app: true
+  restart: always
+  dns:
+    - 1.1.1.1
+  # volumes:
+      # - ./servers.json:/gluetun/servers.json:ro
+  
+
+
+
+services:
+  US-iad-b01:
+    <<: *shared-gluetun
+    ports:
+      - 9001:8080
+
+  US-iad-b02:
+    <<: *shared-gluetun
+    ports:
+      - 9002:8080
+
+  US-iad-b03:
+    <<: *shared-gluetun
+    ports:
+      - 9003:8080
+
+  US-iad-b04:
+    <<: *shared-gluetun
+    ports:
+      - 9004:8080
+
+  US-iad-b05:
+    <<: *shared-gluetun
+    ports:
+      - 9005:8080
+
+  US-iad-b06:
+    <<: *shared-gluetun
+    ports:
+      - 9006:8080
+
+  US-iad-b07:
+    <<: *shared-gluetun
+    ports:
+      - 9007:8080
+
+  US-iad-b08:
+    <<: *shared-gluetun
+    ports:
+      - 9008:8080
+
+  US-iad-b09:
+    <<: *shared-gluetun
+    ports:
+      - 9009:8080
+
+  US-iad-b10:
+    <<: *shared-gluetun
+    ports:
+      - 9010:8080
+
+  US-iad-b11:
+    <<: *shared-gluetun
+    ports:
+      - 9011:8080
+
+  US-iad-b12:
+    <<: *shared-gluetun
+    ports:
+      - 9012:8080
+
+  US-iad-b13:
+    <<: *shared-gluetun
+    ports:
+      - 9013:8080
+
+  US-iad-b14:
+    <<: *shared-gluetun
+    ports:
+      - 9014:8080
+
+  US-iad-b15:
+    <<: *shared-gluetun
+    ports:
+      - 9015:8080    
+
+  US-iad-b16:
+    <<: *shared-gluetun
+    ports:
+      - 9016:8080
+
+  US-iad-b17:
+    <<: *shared-gluetun
+    ports:
+      - 9017:8080
+
+  US-iad-b18:
+    <<: *shared-gluetun
+    ports:
+      - 9018:8080
+
+  US-iad-b19:
+    <<: *shared-gluetun
+    ports:
+      - 9019:8080
+
+  US-iad-b20:
+    <<: *shared-gluetun
+    ports:
+      - 9020:8080
+
+  US-iad-b21:
+    <<: *shared-gluetun
+    ports:
+      - 9021:8080
+
+  US-iad-b22:
+    <<: *shared-gluetun
+    ports:
+      - 9022:8080
+
+  US-iad-b23:
+    <<: *shared-gluetun
+    ports:
+      - 9023:8080
+
+  US-iad-b24:
+    <<: *shared-gluetun
+    ports:
+      - 9024:8080
+
+  US-iad-b25:
+    <<: *shared-gluetun
+    ports:
+      - 9025:8080
+
+  US-iad-b26:
+    <<: *shared-gluetun
+    ports:
+      - 9026:8080
+
+  US-iad-b27:
+    <<: *shared-gluetun
+    ports:
+      - 9027:8080
+
+  US-iad-b28:
+    <<: *shared-gluetun
+    ports:
+      - 9028:8080
+
+  US-iad-b29:
+    <<: *shared-gluetun
+    ports:
+      - 9029:8080
+
+  US-iad-b30:
+    <<: *shared-gluetun
+    ports:
+      - 9030:8080
