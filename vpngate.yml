@@ -12,6 +12,13 @@ x-shared: &shared-gluetun
   restart: always
   dns:
     - 1.1.1.1
+  healthcheck:
+    test: ["CMD-SHELL", "curl -x http://127.0.0.1:8080 -s --fail --max-time 10 http://api.ipify.org || exit 1"]
+    interval: 30s
+    timeout: 15s
+    retries: 3
+    start_period: 60s
+
   # volumes:
       # - ./servers.json:/gluetun/servers.json:ro
   
