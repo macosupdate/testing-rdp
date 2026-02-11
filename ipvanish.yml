@@ -1,8 +1,8 @@
 name: ipvanish
 
 x-shared: &shared-gluetun
-  # image: qmcgaw/gluetun:pr-2586
-  image: qmcgaw/gluetun
+  image: qmcgaw/gluetun:pr-2586
+  # image: qmcgaw/gluetun
   cap_add:
     - NET_ADMIN
   devices:
